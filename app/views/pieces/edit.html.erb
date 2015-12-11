@@ -1,0 +1,137 @@
+<!-- Validation failure messages -->
+<% if @piece.errors.any? %>
+  <% @piece.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Piece #<%= @piece.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_piece/<%= @piece.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for necklace_style_3 -->
+      <div class="checkbox">
+        <label for="necklace_style_3">
+          <input type="checkbox" id="necklace_style_3" name="necklace_style_3" value="1" <%= "checked" if @piece.necklace_style_3 %>>
+          Necklace style 3
+        </label>
+      </div>
+
+      <!-- Label and input for necklace_style_2 -->
+      <div class="checkbox">
+        <label for="necklace_style_2">
+          <input type="checkbox" id="necklace_style_2" name="necklace_style_2" value="1" <%= "checked" if @piece.necklace_style_2 %>>
+          Necklace style 2
+        </label>
+      </div>
+
+      <!-- Label and input for work -->
+      <div class="checkbox">
+        <label for="work">
+          <input type="checkbox" id="work" name="work" value="1" <%= "checked" if @piece.work %>>
+          Work
+        </label>
+      </div>
+
+      <!-- Label and input for night -->
+      <div class="checkbox">
+        <label for="night">
+          <input type="checkbox" id="night" name="night" value="1" <%= "checked" if @piece.night %>>
+          Night
+        </label>
+      </div>
+
+      <!-- Label and input for everyday -->
+      <div class="checkbox">
+        <label for="everyday">
+          <input type="checkbox" id="everyday" name="everyday" value="1" <%= "checked" if @piece.everyday %>>
+          Everyday
+        </label>
+      </div>
+
+      <!-- Label and input for gold -->
+      <div class="checkbox">
+        <label for="gold">
+          <input type="checkbox" id="gold" name="gold" value="1" <%= "checked" if @piece.gold %>>
+          Gold
+        </label>
+      </div>
+
+      <!-- Label and input for silver -->
+      <div class="checkbox">
+        <label for="silver">
+          <input type="checkbox" id="silver" name="silver" value="1" <%= "checked" if @piece.silver %>>
+          Silver
+        </label>
+      </div>
+
+      <!-- Label and input for designer_id -->
+      <div class="form-group">
+        <label for="designer_id" class="control-label">
+          Designer
+        </label>
+
+        <input type="text" id="designer_id" name="designer_id" placeholder="Designer" class="form-control" value="<%= @piece.designer_id %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @piece.price %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @piece.description %></textarea>
+      </div>
+
+      <!-- Label and input for necklace_style_1 -->
+      <div class="checkbox">
+        <label for="necklace_style_1">
+          <input type="checkbox" id="necklace_style_1" name="necklace_style_1" value="1" <%= "checked" if @piece.necklace_style_1 %>>
+          Necklace style 1
+        </label>
+      </div>
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @piece.title %>">
+      </div>
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="<%= @piece.image %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Piece
+      </button>
+      or
+      <a href="/pieces/<%= @piece.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

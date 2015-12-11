@@ -1,0 +1,62 @@
+<div class="page-header">
+  <h1>
+    Browse through all of the pieces...
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Designer</th>
+        <th>Occassion</th>
+        <th>Style</th>
+        <th>Metal</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+
+      <% @pieces.each do |piece| %>
+      <tr>
+        <td><img src="<%= piece.image %>" width="80"></td>
+        <td><%= piece.title %></td>
+        <td><%= piece.designer.name %></td>
+        <td>
+          <% if piece.work == true %>
+            Work
+          <% end %>
+          <% if piece.everyday == true %>
+            Everyday
+          <% end %>
+          <% if piece.night == true %>
+            Night
+          <% end %></td>
+        <td>
+          <% if piece.necklace_style_1 == true %>
+            Trendy
+          <% end %>
+          <% if piece.necklace_style_2 == true %>
+            Classic
+          <% end %>
+          <% if piece.necklace_style_3 == true %>
+            Statement
+          <% end %>
+        <td>
+          <% if piece.silver == true %>
+            Silver
+          <% end %>
+          <% if piece.gold == true %>
+            Gold
+          <% end %></td>
+        <td><%= piece.price %></td>
+        <td><%= piece.description %></td>
+        <td>
+          <a href="/pieces/<%= piece.id %>" class="btn btn-info">Show</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="jumbotron">
+      <h3>
+        <%= @user.name %>
+      </h3>
+    </div>
+
+    <ul class="list-group">
+          <ul>City: <%= @user.city %></ul>
+          <ul>Birthday: <%= @user.dob %></ul>
+          <ul>Occassion:
+          <% if @user.work == true %>
+            Work
+          <% end %>
+          <% if @user.everyday == true %>
+            Everyday
+          <% end %>
+          <% if @user.night == true %>
+            Night
+          <% end %></ul>
+          <ul>Style:
+          <% if @user.necklace_style_1 == true %>
+            Trendy
+          <% end %>
+          <% if @user.necklace_style_2 == true %>
+            Classic
+          <% end %>
+          <% if @user.necklace_style_3 == true %>
+            Statement
+          <% end %>
+          <% if @user.necklace_style_4 == true %>
+            Simple
+          <% end %></ul>
+          <ul>Metal:
+          <% if @user.silver == true %>
+            Silver
+          <% end %>
+          <% if @user.gold == true %>
+            Gold
+          <% end %></ul>
+      </ul>
+      <button class="btn btn-block">
+        <a href="/users/edit">
+          Update Profile
+        </button>
+    </div>
+</div>

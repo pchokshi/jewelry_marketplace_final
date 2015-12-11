@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="jumbotron">
+      <h3>
+        <%= @piece.title %>
+      </h3>
+    </div>
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dd><img src="<%= @piece.image %>" width="200"></dd>
+      <dt>Designer</dt>
+      <dd><%= @piece.designer.name %></dd>
+
+      <dt>Occassion</dt>
+      <dd>
+          <% if @piece.work == true %>
+            Work
+          <% end %>
+          <% if @piece.everyday == true %>
+            Everyday
+          <% end %>
+          <% if @piece.night == true %>
+            Night
+          <% end %></dd>
+
+      <dt>Style</dt>
+        <dd><% if @piece.necklace_style_1 == true %>
+            Trendy
+          <% end %>
+          <% if @piece.necklace_style_2 == true %>
+            Classic
+          <% end %>
+          <% if @piece.necklace_style_3 == true %>
+            Statement
+          <% end %>
+          <% if @piece.necklace_style_4 == true %>
+            Simple
+          <% end %></dd>
+
+      <dt>Metal</dt>
+        <dd><% if @piece.silver == true %>
+            Silver
+          <% end %>
+          <% if @piece.gold == true %>
+            Gold
+          <% end %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @piece.price %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @piece.description %></dd>
+
+    </dl>
+    <% if current_user.present? %>
+    <div class="btn-group btn-group-justified">
+      <a href="/pieces" class="btn btn-primary">
+        Back
+      </a>
+    </div>
+    <%end%>
+      <% if current_designer.present? %>
+      <div class="btn-group btn-group-justified">
+      <a href="/designers/<%=current_designer.id%>" class="btn btn-default">
+        Back
+      </a>
+      </div>
+      <%end%>
+  </div>
+</div>
+  </div>
+</div>
