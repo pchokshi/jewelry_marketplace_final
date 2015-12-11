@@ -9,21 +9,21 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def after_sign_in_path_for(resource)
+def after_sign_in_path_for(resource)
     if resource.class == Designer
-      "/pieces"
+         "/designers/#{@designer.id}"
     elsif resource.class == User
-      "/pieces"
+        "/users/#{@user.id}/rec"
     end
-  end
+end
 
-  def after_update_path_for(resource)
+def after_update_path_for(resource)
     if resource.class == Designer
-      "/pieces"
+         "/designers/#{@designer.id}"
     elsif resource.class == User
-      "/pieces"
+        "/users/#{@user.id}"
     end
-  end
+end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name

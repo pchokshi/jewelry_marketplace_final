@@ -1,6 +1,8 @@
 <div class="page-header">
   <h1>
+  <small>
     Add and View Your Pieces...
+  </small>
   </h1>
 </div>
 
@@ -119,11 +121,14 @@
         <th>Metal</th>
         <th>Price</th>
         <th>Description</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
 
       <% @designer.pieces.each do |piece| %>
       <tr>
-        <td><img src="<%= piece.image %>" width="80"></td>
+        <td><img src="<%= piece.image %>" width="100"></td>
         <td><%= piece.title %></td>
         <td>
           <% if piece.work == true %>
@@ -156,7 +161,11 @@
         <td><%= piece.description %></td>
         <td>
           <a href="/pieces/<%= piece.id %>" class="btn btn-info">Show</a>
+        </td>
+        <td>
           <a href="/pieces/<%= piece.id %>/edit" class="btn btn-default">Edit</a>
+        </td>
+        <td>
           <a href="/delete_piece/<%= piece.id %>" class="btn btn-primary" rel="nofollow">Delete</a>
         </td>
       </tr>

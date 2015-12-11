@@ -1,6 +1,8 @@
 <div class="page-header">
   <h1>
+  <small>
     Browse through all of the pieces...
+  </small>
   </h1>
 </div>
 
@@ -16,6 +18,10 @@
         <th>Metal</th>
         <th>Price</th>
         <th>Description</th>
+        <%if current_user.present?%>
+        <th>Favorite</th>
+        <%end%>
+        <th></th>
       </tr>
 
       <% @pieces.each do |piece| %>
@@ -52,8 +58,30 @@
           <% end %></td>
         <td><%= piece.price %></td>
         <td><%= piece.description %></td>
+        <% if current_user.present?%>
         <td>
-          <a href="/pieces/<%= piece.id %>" class="btn btn-info">Show</a>
+              <% favorite = Favorite.find_by(:piece_id => piece.id, :user_id => current_user.id) %>
+              <% if favorite.present? %>
+                <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-link">
+                  <i class="fa fa-heart"></i>
+                </a>
+              <% else %>
+              <form action="/create_favorite" method="post">
+              <!-- Hidden input for authenticity token to protect from forgery -->
+              <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+              <input type="hidden" name="piece_id" value="<%= piece.id %>">
+
+              <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+              <button class="btn btn-link">
+                <i class="fa fa-heart-o"></i>
+              </button>
+              <% end %>
+            </td>
+          <%end%>
+        <td>
+          <a href="/pieces/<%= piece.id %>" class="btn btn-primary">Show</a>
         </td>
       </tr>
       <% end %>

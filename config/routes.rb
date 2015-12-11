@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   get "/", :controller => "welcome", :action => "home"
 
+#as :user do
+#  get 'users/edit', :to => 'pieces#index', :as => :user_root # Rails 3
+#end
+
 
   # Routes for the Users & Designers resource:
   get "/users", :controller => "users", :action => "index"
