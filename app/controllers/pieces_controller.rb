@@ -32,7 +32,7 @@ class PiecesController < ApplicationController
     @piece.image = params[:image]
 
     if @piece.save
-      redirect_to "/pieces", :notice => "Piece created successfully."
+      redirect_to "/designers/#{current_designer.id}", :notice => "Piece created successfully."
     else
       render 'new'
     end
@@ -60,7 +60,7 @@ class PiecesController < ApplicationController
     @piece.image = params[:image]
 
     if @piece.save
-      redirect_to "/pieces", :notice => "Piece updated successfully."
+      redirect_to "/designers/#{current_designer.id}", :notice => "Piece updated successfully."
     else
       render 'edit'
     end

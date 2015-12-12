@@ -4,9 +4,9 @@ class WelcomeController < ApplicationController
 
   def home
     if current_user.present?
-      redirect_to "/users/#{@user.id}/rec"
+      redirect_to "/users/#{current_user.id}/rec"
     elsif current_designer.present?
-      redirect_to "/designers/#{@designer.id}"
+      redirect_to "/designers/#{current_designer.id}"
     end
   end
 end
